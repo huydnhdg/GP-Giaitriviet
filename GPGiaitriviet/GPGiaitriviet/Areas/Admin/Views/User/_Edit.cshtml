@@ -1,0 +1,49 @@
+﻿@model GPGiaitriviet.Models.AspNetUser
+
+@using (Html.BeginForm("Edits", "User"))
+{
+    @Html.AntiForgeryToken()
+    
+
+<div class="form-horizontal">
+    <h4>Cập nhật thông tin tài khoản</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-group">
+        @Html.Label("Tên tài khoản", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Số điện thoại", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Nhập mật khẩu", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.PasswordHash, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.DefaultDescription } })
+            @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Email", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>   
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-ok"></i> Lưu</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Thoát</button>
+        </div>
+    </div>
+</div>
+}
+

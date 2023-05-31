@@ -1,0 +1,235 @@
+﻿@model PagedList.IPagedList<GPGiaitriviet.Areas.Admin.Data.LogMoMt>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Log";
+    var index = 1;
+    var indexPage = 0;
+    var customer = ViewBag.user;
+    var point = ViewBag.point;
+}
+<style>
+    .user tr td {
+        border-top: none !important;
+    }
+
+    .point tr:first-child {
+        background-color: darkgray;
+    }
+</style>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Index", "LogMo", FormMethod.Get))
+        {
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Thông tin</label>
+                    @Html.TextBox("searchstring", ViewBag.searchstring as string, new { @class = "form-control", placeholder = "nhập số điện thoại, mã code" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    @Html.DropDownList("status", new List<SelectListItem> { new SelectListItem() { Text = "Thành công", Value = "0" },  new SelectListItem() { Text = "Sai cú pháp", Value = "3" }, new SelectListItem() { Text = "Trùng mã thẻ", Value = "4" }, new SelectListItem() { Text = "Mã không đúng", Value = "1" } }, "--Trạng thái--", new { @class = "form-control" })
+                </div>
+            </div>
+            @*<div class="col-md-3 hidden">
+                <div class="form-group">
+                    <label>Sản phẩm</label>
+                    @Html.DropDownList("product", new List<SelectListItem> { new SelectListItem() { Text = "Hoạt huyết T-Đình", Value = "HHTD" }, new SelectListItem() { Text = "Khớp tọa chi đan", Value = "KTCD" }, new SelectListItem() { Text = "Superman", Value = "SUPERMAN" }, new SelectListItem() { Text = "Viên vai gáy", Value = "VVG" } }, "--Sản phẩm--", new { @class = "form-control" })
+                </div>
+            </div>*@
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Kênh</label>
+                    @Html.DropDownList("chanel", new List<SelectListItem> { new SelectListItem() { Text = "WEB", Value = "WEB" }, new SelectListItem() { Text = "SMS", Value = "SMS" } }, "--Kênh--", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Từ ngày</label>
+                    @Html.TextBox("from_date", ViewBag.from_date as string, new { @class = "form-control", @type = "date", @format = "dd-MM-yyyy" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Đến ngày</label>
+                    @Html.TextBox("to_date", ViewBag.to_date as string, new { @class = "form-control", @type = "date", @format = "dd-MM-yyyy" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Tìm kiếm</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <a class="btn btn-success" href="/Admin/LogMo/Khachhang"><i class="ti ti-export"></i> Xuất file</a>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Code
+                </th>
+                <th>
+                    MO
+                </th>
+                <th>
+                    Tên khách hàng
+                </th>
+                <th>Sản phẩm</th>
+                <th>Biển số</th>
+                <th>
+                    Ngày gửi
+                </th>
+                <th>
+                    Kênh
+                </th>
+                <th>
+                    Nội dung
+                </th>
+                <th>
+                    Mã lỗi
+                </th>
+                <th>
+                    Trạng thái
+                </th>
+                <th>
+                    #
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                indexPage = @index++ + (@Model.PageNumber - 1) * @Model.PageSize;
+                <tr>
+                    <td>@indexPage</td>
+                    <td hidden>@item.MO_ID</td>
+                    <td>
+                        @item.Phone
+                    </td>
+                    <td>
+                        <span>TMAS</span>@item.Code
+                    </td>
+                    <td>
+                        @item.Mo
+                    </td>
+                    <td>
+                        @item.Customer_name
+                    </td>
+                    <td>
+                        @item.MOProduct
+                    </td>
+                    <td>
+                        @item.Lisense_code
+                    </td>
+                    <td>
+                        @item.Createdate.Value.ToString("dd/MM/yyyy HH:mm")
+                    </td>
+                    <td>
+                        @item.Chanel
+                    </td>
+                    <td>
+                        @item.Message
+                    </td>
+                    <td>
+                        @item.Product
+                    </td>
+                    <td>
+                        @if (item.Status == 0)
+                        {
+                            <span class="alert-success">Thành công</span>
+                        }
+                        else if (item.Status == 1)
+                        {
+                            <span class="alert-danger">Sai mã thẻ</span>
+                        }
+                        else if (item.Status == 2)
+                        {
+                            <span class="alert-info">Tra cứu</span>
+                        }
+                        else if (item.Status == 3)
+                        {
+                            <span class="alert-info">Sai cú pháp</span>
+                        }
+                        else if (item.Status == 4)
+                        {
+                            <span class="alert-info">Trùng mã</span>
+                        }
+                        else if (item.Status == 5)
+                        {
+                            <span class="alert-danger">QHM 6t</span>
+                        }
+                        else if (item.Status == 6)
+                        {
+                            <span class="alert-danger">QHM 1t</span>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn" href="javascript:void(0)"><i class="fa fa-edit fa-fw">Sửa</i></a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<hr />
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, searchstring = ViewBag.searchstring, from_date = ViewBag.from_date, to_date = ViewBag.to_date, status = ViewBag.status, User_ID = ViewBag.User_ID, chanel = ViewBag.chanel, product = ViewBag.product }))
+<p class="pageof">page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+
+
+@section scripts{
+    <script>
+        $(".btn").click(function () {
+            //get student id of row clicked
+            var studentId = $(this).closest("tr").find("td").eq(1).html();
+            $.ajax({
+                type: "POST", //Method type
+                url: "/Admin/LogMo/EditCustomer", //url to load partial view
+                data: '{Id: "' + studentId + '" }', //send student id
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $('#ModalBody').html(response);
+                    $('#myModal').modal('show');
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+    </script>
+}
+<!--Bootstrap Pop Up modal-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End of Bootstrap Pop-Up modal-->

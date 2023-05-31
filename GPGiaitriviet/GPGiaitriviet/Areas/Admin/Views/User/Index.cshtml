@@ -1,0 +1,175 @@
+﻿@model PagedList.IPagedList<GPGiaitriviet.Models.AspNetUser>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "User";
+    var index = 0;
+}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Index", "User", FormMethod.Get))
+        {
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Thông tin</label>
+                    @Html.TextBox("SearchString", ViewBag.SearchString as string, new { @class = "form-control", placeholder = "" })
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Tìm kiếm</button>
+                    <a href="#" class="btn btn-info" id="add"><i class="glyphicon glyphicon-user"></i> Tạo mới</a>
+                    <!--<a href="/admin/account/register" class="btn btn-info"><i class="glyphicon glyphicon-user"></i> Tạo mới</a>-->
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped" id="table-user">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    Tài khoản
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Quyền
+                </th>
+                <th>
+                    #
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                index++;
+            <tr>
+                <td>@index</td>
+                <td class="hidden">@item.Id</td>
+                <td>
+                    @item.UserName
+                </td>
+                <td>
+                    @item.PhoneNumber
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @if (item.AspNetRoles.FirstOrDefault() != null)
+                    {
+                        <span>@item.AspNetRoles.FirstOrDefault().Id</span>
+                    }
+                </td>
+                <td>
+                    <a href="#" class="edits"><i class="glyphicon glyphicon-edit"></i></a>
+                    @*<a href="/admin/user/delete/@item.Id" ><i class="glyphicon glyphicon-remove"></i></a>*@
+                    <a href="#" class="delete"><i class="glyphicon glyphicon-remove"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<hr />
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, SearchString = ViewBag.SearchString }))
+<p class="pageof">page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+
+<!--Bootstrap Pop Up modal-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End of Bootstrap Pop-Up modal-->
+
+@section scripts{
+    <script>
+        $("#table-user .edits").click(function () {
+            //get student id of row clicked
+            var studentId = $(this).closest("tr").find("td").eq(1).html();
+            $.ajax({
+                type: "POST", //Method type
+                url: "/Admin/User/Edit", //url to load partial view
+                data: '{studentId: "' + studentId + '" }', //send student id
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $('#ModalBody').html(response);
+                    $('#myModal').modal('show');
+                },
+
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+        $("#add").click(function () {
+            //get student id of row clicked
+            // var studentId = $(this).closest("tr").find("td").eq(1).html();
+            $.ajax({
+                type: "POST", //Method type
+                url: "/Admin/User/Register", //url to load partial view
+                // data: '{Id: "' + Id + '" }', //send student id
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $('#ModalBody').html(response);
+                    $('#myModal').modal('show');
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+        $("#table-user .delete").click(function () {           
+            var x = confirm('Bạn có chắc chắn muốn xóa user này ?');            
+            var studentId = $(this).closest("tr").find("td").eq(1).html();
+            if (x) {                      
+                $.ajax({
+                    type: "POST", //Method type
+                    url: "/Admin/User/Delete", //url to load partial view
+                    data: '{Id: "' + studentId + '" }', //send student id
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (msg) {                       
+                        alert(msg);
+                        location.reload();
+                    },
+                    failure: function (msg) {
+                        alert(msg);
+                    },
+                    error: function (msg) {
+                        alert(msg);
+                    }
+                });
+            } else {               
+                return false;
+            }
+        });
+    </script>
+}

@@ -1,0 +1,74 @@
+﻿@model GPGiaitriviet.Areas.Admin.Data.HomeModel
+@{
+    ViewBag.Title = "Report";
+}
+<style>
+    table {
+        background-color: cornsilk;
+    }
+
+        table thead {
+            background-color: bisque;
+        }
+
+        table tr td {
+            text-align: center;
+        }
+
+        table tr th {
+            text-align: center;
+        }
+</style>
+<h3 class="sub-header">Thống kê</h3>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tổng cộng</th>
+                </tr>
+            </thead>
+
+            <tr>
+                <td>Khách hàng</td>
+                <td>@Model.Customer</td>
+            </tr>
+            <tr>
+                <td>Mã đã tích điểm</td>
+                <td>@Model.Code</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Nhãn hàng</th>
+                    <th>Số lượng khách hàng</th>
+                    <th>Mã đã tích điểm</th>
+                    <th>Số lượt đủ hạn mức</th>
+                    <th>Chưa liên hệ</th>
+                    <th>Đã nhận quà</th>
+                    <th>Tổng số mã</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.Nhanhang)
+                {
+                <tr>
+                    <td>@item.Code</td>
+                    <td>@item.SoLuongKhachHang</td>
+                    <td>@item.Tong</td>
+                    <td>@item.Duhanmuc</td>
+                    <td>@item.Chuatrathuong</td>
+                    <td>@item.Datrathuong</td>
+                    <td>@item.Ma</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

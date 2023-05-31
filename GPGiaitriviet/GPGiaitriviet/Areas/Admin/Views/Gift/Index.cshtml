@@ -1,0 +1,312 @@
+﻿@model PagedList.IPagedList<GPGiaitriviet.Models.GiftModels>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "GiftExchange";
+    var index = 1;
+    var indexPage = 0;
+    List<GPGiaitriviet.Models.AspNetUser> tele = (List<GPGiaitriviet.Models.AspNetUser>)TempData["tele"];
+    bool isView = User.IsInRole("Admin") || User.IsInRole("Leader");
+}
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Index", "Gift", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Thông tin</label>
+                        @Html.TextBox("searchstring", ViewBag.searchstring as string, new { @class = "form-control", placeholder = "nhập số điện thoại" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        @Html.DropDownList("status", new List<SelectListItem> { new SelectListItem() { Text = "Chưa liên hệ", Value = "0" }, new SelectListItem() { Text = "Đã liên hệ", Value = "1" }, new SelectListItem() { Text = "Đã gửi quà", Value = "2" }, new SelectListItem() { Text = "Đã nhận quà", Value = "3" } }, "--Trạng thái--", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Sản phẩm</label>
+                        @Html.DropDownList("product", new List<SelectListItem> { new SelectListItem() { Text = "Hoạt huyết T-Đình", Value = "HHTD" }, new SelectListItem() { Text = "Khớp tọa chi đan", Value = "KTCD" }, new SelectListItem() { Text = "Superman", Value = "SUPERMAN" }, new SelectListItem() { Text = "Viên vai gáy", Value = "VVG" } }, "--Sản phẩm--", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @if (isView)
+                    {
+                        <div class="form-group">
+                            <label>Người phụ trách</label>
+                            @Html.DropDownList("callby", new SelectList(tele, "UserName", "UserName"), "--Chọn người phụ trách--", new { @class = "form-control" })
+                        </div>
+                      
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Từ ngày</label>
+                        @Html.TextBox("from_date", ViewBag.from_date as string, new { @class = "form-control", @type = "date", @format = "dd-MM-yyyy" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Đến ngày</label>
+                        @Html.TextBox("to_date", ViewBag.to_date as string, new { @class = "form-control", @type = "date", @format = "dd-MM-yyyy" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Tìm kiếm</button>
+                        <a class="btn btn-info" href="@Url.Action("ExportExcel")"><i class="glyphicon glyphicon-download-alt"></i> Xuất file</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@*@if (User.IsInRole("Admin"))
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @using (Html.BeginForm("AddTele", "Gift", FormMethod.Get))
+                {
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-5 col-xs-5">
+                                @Html.DropDownList("tele", new SelectList(tele, "UserName", "UserName"), "--choose telesale--",
+                                    new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <button type="button" id="choosetele" class="btn btn-primary"><i class="glyphicon glyphicon-screenshot"></i> Chọn nhân viên</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }*@
+@*<div>
+        <a class="btn btn-info" href="@Url.Action("ExportExcel")"><i class="glyphicon glyphicon-download-alt"></i> Xuất file</a>
+    </div>
+    </br>*@
+<div class="table-responsive">
+    <table class="table table-striped" id="table-gift">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    Khách hàng
+                </th>
+                <th>
+                    Lần đổi
+                </th>
+                <th>
+                    Số điểm
+                </th>
+                <th>
+                    Sản phẩm
+                </th>
+
+                <th>
+                    Ngày tạo
+                </th>
+                <th>Trạng thái</th>
+
+                <th>
+                    Ngày cập nhật
+                </th>
+                <th>
+                    Phụ trách
+                </th>
+                <th>
+                    Ghi chú
+                </th>
+                <th>#</th>
+                @*@if (User.IsInRole("Admin"))
+        {
+            <th class="text-center">
+                <input type="checkbox" onclick="toggle(this);" />
+            </th>
+        }*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                indexPage = @index++ + (@Model.PageNumber - 1) * @Model.PageSize;
+            <tr>
+                <td>@indexPage</td>
+                <td class="hidden">@item.ID</td>
+                <td>
+                    @item.Phone<br />
+                    @item.Name<br />
+                    @if (item.Birthday != null)
+                    {
+                        @item.Birthday<br />
+                    }
+                    @if (item.Sex != null)
+                    {
+                        @item.Sex<br />
+                    }
+                    @item.Address 
+                </td>
+                <td>
+                    @item.Count
+                </td>
+                <td>
+                    @if (item.Product.Equals("HHTD"))
+                    {
+                        @item.HHTD
+                    }
+                    else if (item.Product.Equals("KTCD"))
+                    {
+                        @item.KTCD
+                    }
+                    else if (item.Product.Equals("SUPERMAN"))
+                    {
+                        @item.SUPERMAN
+                    }
+                    else if (item.Product.Equals("VVG"))
+                    {
+                        @item.VVG
+                    }
+                </td>
+                <td>
+                    @item.Product
+                </td>
+                <td>
+                    @item.Createdate.Value.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @if (item.Status == 0)
+                    {
+                        <span class="alert-danger">Chưa liên hệ</span>
+                    }
+                    else if (item.Status == 1)
+                    {
+                        <span class="alert-info">Đã liên hệ</span>
+                    }
+                    else if (item.Status == 2)
+                    {
+                        <span class="alert-warning">Đã gửi quà</span>
+                    }
+                    else if (item.Status == 3)
+                    {
+                        <span class="alert-success">Đã nhận quà</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Successdate != null)
+                    {
+                        <span>@item.Successdate.Value.ToString("dd/MM/yyyy")</span>
+                    }
+                </td>
+                <td>
+                    @item.Callby
+                </td>
+                <td>
+                    @item.Note
+                </td>
+                <td>
+                    <a href="#" class="edits"><i class="glyphicon glyphicon-edit"></i></a>
+                </td>
+                @*@if (User.IsInRole("Admin"))
+        {
+            <td class="text-center">
+                @if (item.Status == 0 && item.Callby == null)
+                {
+                    <a class="btn"><input type="checkbox" class="checkBox" value="@item.ID" /></a>
+                }
+            </td>
+        }*@
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<hr />
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, searchstring = ViewBag.searchstring, from_date = ViewBag.from_date, to_date = ViewBag.to_date, status = ViewBag.status, callby = ViewBag.callby, product = ViewBag.product }))
+<p class="pageof">page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+
+<!--Bootstrap Pop Up modal-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End of Bootstrap Pop-Up modal-->
+
+
+@section scripts{
+    <script>
+        function toggle(source) {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i] != source)
+                    checkboxes[i].checked = source.checked;
+            }
+        }
+        $("#choosetele").click(function () {
+            var x = confirm('Chuyển phiếu cho nhân viên ?');
+            if (x) {
+                var selectedIDs = new Array();
+                $('input:checkbox.checkBox').each(function () {
+                    if ($(this).prop('checked')) {
+                        selectedIDs.push($(this).val());
+                    }
+                });
+                var tele = $("#tele :selected").text();
+                console.log(JSON.stringify(selectedIDs, tele));
+
+                var options = {};
+                options.url = "/Admin/Gift/AddTele";
+                options.type = "POST";
+                options.data = JSON.stringify({ "tele": tele, "productIDs": selectedIDs });
+                options.contentType = "application/json";
+                options.dataType = "json";
+                options.success = function (msg) {
+                    alert(msg);
+                    location.reload();
+
+                };
+                options.error = function () {
+                    alert("Error while deleting the records!");
+                };
+                $.ajax(options);
+            } else {
+                return false;
+            }
+        });
+        $("#table-gift .edits").click(function () {
+            //get student id of row clicked
+            var studentId = $(this).closest("tr").find("td").eq(1).html();
+            $.ajax({
+                type: "POST", //Method type
+                url: "/Admin/Gift/Edit", //url to load partial view
+                data: '{studentId: "' + studentId + '" }', //send student id
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $('#ModalBody').html(response);
+                    $('#myModal').modal('show');
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+    </script>
+}

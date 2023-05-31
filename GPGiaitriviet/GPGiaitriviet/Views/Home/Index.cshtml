@@ -1,0 +1,828 @@
+﻿@{
+    ViewBag.Title = "Tích điểm";
+}
+<style>
+    .modal-header {
+        border-bottom: none;
+    }
+</style>
+<section id="gioithieu" class="padding_top_content">
+    &nbsp;
+</section>
+
+<section class="gioithieu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="text-center">
+                    <p class="title">
+                        Giới thiệu chương trình khuyến mại
+                    </p>
+                </div>
+                <div class="text-justify" style="color: #231f20;">
+                    <p>
+                        Cảm ơn Quý khách đã tin dùng sản phẩm Hoạt huyết T-Đình, Khớp tọa chi đan, Super-Man, Viên vai gáy của Dược phẩm GP France.
+                    </p>
+                    <p>
+                        Quý khách vui lòng cào tem tích điểm để tham gia chương trình khuyến mại MUA 6 TẶNG 1 Hoạt huyết T-Đình, Khớp tọa chi đan, Super-Man, Viên vai gáy như sau:
+                    </p>
+                    <p>
+                        <b>NỘI DUNG CHƯƠNG TRÌNH</b>
+                    </p>
+                    <p>
+                        Mỗi hộp sản phẩm Hoạt huyết T-Đình, Khớp tọa chi đan, Super-Man, Viên vai gáy có 1 tem tích điểm, mỗi tem này sẽ tích được 1 điểm.
+                    </p>
+                    <p>
+                        Khi tích đủ 6 điểm (tương ứng với 6 hộp Hoạt huyết T-Đình, Khớp tọa chi đan, Super-Man hoặc Viên vai gáy) trong vòng 6 tháng, quý khách sẽ được tặng 1 hộp Hoạt huyết T-Đình, Khớp tọa chi đan, Super-Man hoặc Viên vai gáy cùng loại.
+                    </p>
+                    <p>
+                        <b>Lưu ý:</b> Mỗi số điện thoại chỉ được tích lũy tối đa 36 hộp mỗi sản phẩm trong vòng 6 tháng kể từ lần đầu tiên gửi tin lên hệ thống.
+                    </p>
+                    <p>
+                        <b>THỜI GIAN ÁP DỤNG</b>: Từ ngày 01/06/2021
+                    </p>
+                    <p>
+                        <b>ĐỐI TƯỢNG ÁP DỤNG:</b>
+                    </p>
+                    <p>Chương trình áp dụng cho tất cả các khách hàng mua lẻ và trực tiếp sử dụng sản phẩm Hoạt huyết T-Đình, Khớp tọa chi đan, Super-Man hoặc Viên vai gáy.</p>
+                    <p>
+                        <b>Không áp dụng với:</b> Các khách hàng là nhà thuốc, nhân viên nhà thuốc, nhân viên công ty Cổ phần liên doanh dược GP France, nhân viên công ty in tem cào, nhân viên công ty cung cấp giải pháp và phần mềm tích điểm.
+                    </p>
+                    <p>
+                        Xin trân trọng cảm ơn!
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
+
+<section id="tichdiem" class="padding_top_content" style="margin-top: -50px;">
+    <div class="container section_title">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <p class="title">
+                        Tích điểm
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tichdiem">
+    <div class="container">
+        <div class="col-md-6">
+            <div class="col-md-12" style="text-align: justify;">
+                <div class="row content">
+                    <span style="color: #ec1c24; font-weight: bold;">Cách 1: </span><span style="font-weight: bold;">Tích điểm qua tin nhắn điện thoại:</span>
+                    <br />Cào lấy mã trên tem dán ở vỏ hộp sản phẩm
+                </div>
+                <div class="row content">
+                    <img class="img-responsive" src="~/Image/client/tichdiem.jpg" />
+                </div>
+                <div class="row content method_1_note_mobile">
+                    <span style="color: #ec1c24; font-weight: bold;">Lưu ý: </span><br />
+                    1. Phí gửi tin nhắn tích điểm: 1000đ/tin nhắn, 1 mã chỉ có giá trị tích điểm cho 1 lần.<br />
+                    2. Dùng 1 số điện thoại để tích cho 6 hoặc tất cả các lần tích điểm.<br />
+                    3. Cách tích điểm 1 mã trong 1 lần.<br />
+                    <span style="font-weight: bold;">Ví dụ:</span> Soạn tin <span style="font-weight: bold;">GP XHB4HKGH6 </span> Gửi <span style="font-weight: bold;">8077</span><br />
+                    4. Cần tích đủ 6 điểm trong vòng 6 tháng (tính từ thời điểm tích điểm hộp đầu tiên) để được nhận quà.<br/>
+                    <span style="font-weight: bold;">Ví dụ:</span> Nếu khách hàng tích được 1 điểm đầu tiên vào ngày 1/1/2021 thì khách hàng cần tích đủ 6 điểm trước ngày 1/7/2021 mới đủ điều kiện nhận quà.<br />
+                    5. Điểm tích lũy chỉ có giá trị trong thời gian diễn ra chương trình khuyến mại, sau khi chương trình kết thúc các điểm số còn lại của khách hàng sẽ không còn giá trị sử dụng.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-12" style="text-align: justify;">
+                <div class="row content method_2_mobile">
+                    <span style="color: #ec1c24; font-weight: bold;">Cách 2: </span><span style="font-weight: bold;">Tích điểm trực tiếp tại đây:</span>
+                    <br />Cào lấy mã trên tem dán ở vỏ hộp sản phẩm
+                </div>
+                <div class="row content method_2_form_mobile">
+                    <form class="form" method="post" id="form" action="Home/CallApi">
+                        <div class="form-group">
+                            <input class="form-control" id="phone1" onblur="checkPhone(this)" type="number" placeholder="Nhập số điện thoại tích điểm" required style="height: 41px; font-size: 25px;" value="" />
+                            <label style="color: #D32027; display: none; font-style: italic;" id="phone1_error"></label>
+                            <label style="color: green; display: none; font-style: italic;" id="phone1_normal"></label>
+                        </div>
+                        <div class="form-group" style="padding-top: 10px;">
+                            <input class="form-control" id="code" type="text" onblur="validateCode(this)" placeholder="Nhập mã cào tại đây" required style="height: 41px; font-size: 25px;" value="" />
+                            <label style="color: #D32027; display: none; font-style: italic;" id="code_error"></label>
+                            <label style="color: forestgreen; display: none; font-style: italic;" id="code_normal"></label>
+                        </div>
+                        <div class="text-center method_2_button_mobi">
+                            <button id="submit" class="btn tichdiem_btn zoom" type="button">TÍCH ĐIỂM</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row content">
+                    <span style="color: #ec1c24; font-weight: bold;">Lưu ý: </span><br />
+                    1. Phí tích điểm tại đây: 0đ. 1 mã chỉ có giá trị tích điểm cho 1 lần<br />                    
+                    2. Dùng 1 số điện thoại để tích cho 6 hoặc tất cả các lần tích điểm.<br />
+                    3. Cần tích đủ 6 điểm trong vòng 6 tháng (tính từ thời điểm tích điểm hộp đầu tiên) để được nhận quà.<br />
+                    <span style="font-weight: bold;">Ví dụ:</span> Nếu khách hàng tích được 1 điểm đầu tiên vào ngày 1/1/2021 thì khách hàng cần tích đủ 6 điểm trước ngày 1/7/2021 mới đủ điều kiện nhận quà.<br />
+                    4. Điểm tích lũy chỉ có giá trị trong thời gian diễn ra chương trình khuyến mại, sau khi chương trình kết thúc các điểm số còn lại của khách hàng sẽ không còn giá trị sử dụng.
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="tracuu" class="padding_top_content" style="margin-top: -50px;">
+    <div class="container section_title">
+        <div class="col-md-12">
+            <div class="text-center">
+                <p class="title">
+                    Tra cứu
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tracuu">
+    <div class="container">
+        <div class="col-md-6" style="text-align: justify;">
+            <div class="col-md-12">
+                <div class="row content">
+                    <span style="color: #ec1c24; font-weight: bold;">Cách 1: </span><span style="font-weight: bold;">Tra cứu bằng tin nhắn điện thoại:</span>
+                    <p>
+                        - Muốn tra cứu số điểm tích lũy cho sản phẩm soạn tin theo cú pháp:
+                        <br />
+                        <span style="font-weight: bold;">GP</span> &lt;dấu cách><span style="font-weight: bold;">TC</span> gửi <span style="font-weight: bold;">8077</span>
+                        <br />
+                        <span style="font-weight: bold;">Ví dụ: GP TC </span>gửi <span style="font-weight: bold;">8077</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="text-align: justify;">
+            <div class="col-md-12">
+                <div class="row content method_2_mobile">
+                    <span style="color: #ec1c24; font-weight: bold;">Cách 2: </span><span style="font-weight: bold;">Tra cứu trực tiếp tại đây:</span>
+                </div>
+                <div class="row content">
+                    <form class="form" method="post" id="form_tc" action="Home/CallApi">
+                        <div class="form-group">
+                            <label>Số điện thoại</label>
+                            <input class="form-control" id="phone_tc" onblur="checkPhoneTC(this)" type="number" placeholder="Nhập số điện thoại" required style="height: 41px; font-size: 25px;" value="" />
+                            <label style="color: #D32027; display: none; font-style: italic;" id="phone_tc_error"></label>
+                            <label style="color: forestgreen; display: none; font-style: italic;" id="phone_tc_normal"></label>
+                        </div>
+                        <!--<div class="form-group" style="padding-top: 10px;">
+                            <label>Sản phẩm</label>
+                            <select class="form-control" id="product" style="height: 41px; font-size: 25px; ">
+                                <option value="">Chọn sản phẩm</option>
+                                <option value="HHTD">Hoạt Huyết T-Đình</option>
+                                <option value="KTCD">Khớp Tọa Chi Đan</option>
+                                <option value="SUPER-MAN">SUPER-MAN</option>
+                            </select>
+                            <label style="color: #D32027; display: none; font-style: italic;" id="product_error"></label>
+                            <label style="color: forestgreen; display: none; font-style: italic;" id="product_normal"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>Tổng số hộp đã tích lũy được</label>
+                            <input class="form-control" readonly id="quantity" type="number" style="height: 41px; font-size: 25px;" value="" />
+                        </div>-->
+                        <div class="text-center method_2_button_mobi">
+                            <button id="submit_tc" class="btn tichdiem_btn zoom" type="button">TRA CỨU</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="timhieuthemvesanpham" class="padding_top_content" style="margin-top: -50px;">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="~/Image/client/BANNER.png.jpg" alt="" style="width:100%;">
+            </div>
+
+            <div class="item">
+                <img src="~/Image/client/banner KTCĐ.png.jpg" alt="" style="width:100%;">
+            </div>
+
+            <div class="item">
+                <img src="~/Image/client/banner supper man.jpg" alt="" style="width:100%;">
+            </div>
+
+            <div class="item">
+                <img src="~/Image/client/banner vienvaigay.jpg" alt="" style="width:100%;">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+
+<section id="thanhphan">
+    <div class="container">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            @*<img class="img-responsive zoom thanhphan_img" src="~/images/thanhphan.png" style="padding-top: 50px; padding-bottom: 20px;" />*@
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="container thanhphan text-center" style="">
+        <table class="table-responsive text-center" style="width: 100%; border: none;">
+            <tr>
+                <td style="border: none;">
+                    <div class="text-center method_2_button_mobi zoom">
+                        <a id="button" href="http://duocphamgp.com.vn/" target="_blank" class="btn tichdiem_btn three_button" style="margin-right: 10px;"><br />Tìm điểm bán</a>
+                    </div>
+                </td>
+                <td style="border: none;">
+                    <div class="text-center method_2_button_mobi zoom">
+                        <a style="margin-right: 10px;" id="button" class="btn tichdiem_btn three_button" type="button" href="tel:18001716">
+                            <span style="font-size: 12px">Hotline tư vấn miễn phí:</span><br />
+                            <span style="font-size: 20px; font-weight: bold;">1800.1716</span>
+                        </a>
+                    </div>
+                </td>
+                <td style="border: none;">
+                    <div class="text-center method_2_button_mobi zoom">
+                        <a id="muahangngay" href="http://duocphamgp.com.vn/" target="_blank" class="btn tichdiem_btn three_button"><br />Mua hàng ngay</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="thanhtich">
+    <div class="container thanhtich_text">
+        <div class="col-md-12">
+            @*<p>
+                Trong suốt 14 năm tận tâm và phấn đấu không ngừng, <span style="font-weight: bold;">"Chúng tôi luôn nỗ lực phấn đấu vì 1 cộng đồng khỏe mạnh và phát triển sức khỏe <br />toàn diện"</span> với bộ 3 tiêu chuẩn: <span style="font-weight: bold;">Công thức sản phẩm tối ưu, nhà máy sản xuất đạt tiêu chuẩn GMP của Tổ chức Y tế thế giới WHO và nguồn <br />dược liệu sạch,</span> được nhập khẩu từ những nhà cung cấp hàng đầu thế giới.<br />Chúng tôi tự hào vì đã xây dựng được:
+            </p>*@
+        </div>
+    </div>
+    <div class="container thanhtich">
+        @*<table class="table-responsive text-center" style="width: 100%; border: none;">
+                <tr>
+                    <td width="25%">
+                        <div class="thanhtich1 zoom">
+                            <div class="text_thanhtich">
+                                <span class="counter-count">19301</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td width="25%">
+                        <div class="thanhtich2 zoom">
+                            <div class="text_thanhtich">
+                                <span class="counter-count">82</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td width="25%">
+                        <div class="thanhtich3 zoom">
+                            <div class="text_thanhtich">
+                                <span class="counter-count">7</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td width="25%">
+                        <div class="thanhtich4 zoom">
+                            <div class="text_thanhtich">
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>*@
+    </div>
+</section>
+
+<section id="award">
+    <div class="container section_title">
+        <div class="col-md-12">
+            <div class="text-center">
+                <p class="title">
+                    Các giải thưởng đạt được
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="horizontal_timeline" style="padding-bottom: 100px;">
+    <div class="container">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <img class="img-responsive" src="~/Image/client/giaithuong.jpg" style = "width:100%" />
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</section>
+
+<!--<section id="vertical_timeline">
+    <div class="container">
+        <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img src="~/images/award_1.png" alt="2011" class="img-responsive award_img_slide" />
+                            <p class="award_title">2011</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img src="~/images/award_2.png" alt="2013" class="img-responsive award_img_slide" />
+                            <p class="award_title">2013</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img src="~/images/award_3.png" alt="2014" class="img-responsive award_img_slide" />
+                            <p class="award_title">2014</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img src="~/images/award_4.png" alt="2015" class="img-responsive award_img_slide" />
+                            <p class="award_title">2015</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img src="~/images/award_5.png" alt="2019" class="img-responsive award_img_slide" />
+                            <p class="award_title">2019</p>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+<!-- Controls -->
+<!--<div class="left carousel-control">
+                <a href="#carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </div>
+            <div class="right carousel-control">
+                <a href="#carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>-->
+<!--<section id="horizontal_sanpham">
+        <div class="container">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img class="img-responsive zoom" src="~/images/sanpham_1.png" />
+            </div>
+            <div class="col-md-2" style="padding-top: 38px;">
+                <img class="img-responsive zoom" src="~/images/sanpham_2.png" />
+            </div>
+            <div class="col-md-2">
+                <img class="img-responsive zoom" src="~/images/sanpham_3.png" />
+            </div>
+            <div class="col-md-2">
+                <img class="img-responsive zoom" src="~/images/sanpham_4.png" />
+            </div>
+            <div class="col-md-2" style="padding-top: 38px;">
+                <img class="img-responsive zoom" src="~/images/sanpham_5.png" />
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </section>-->
+<!--<section id="vertical_sanpham">
+    <div class="container">
+        <div id="carousel1" class="carousel slide carousel1" data-ride="carousel" data-type="multi" data-interval="2500">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img class="img-responsive award_img_slide" src="~/images/sanpham_1.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img class="img-responsive award_img_slide" src="~/images/sanpham_2.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img class="img-responsive award_img_slide" src="~/images/sanpham_3.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img class="img-responsive award_img_slide" src="~/images/sanpham_4.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-col">
+                        <div class="text-center">
+                            <img class="img-responsive award_img_slide" src="~/images/sanpham_5.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <div class="left carousel-control">
+                <a href="#carousel1" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </div>
+            <div class="right carousel-control">
+                <a href="#carousel1" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <a class="close_modal" style="border: none;" onclick="resetForm()" data-dismiss="modal">
+                <span aria-hidden="true">
+                    <img src="~/Image/client/modal_close.png" class="img-responsive zoom" />
+                </span>
+                <span class="sr-only">Close</span>
+            </a>
+        </div>
+        <!-- content goes here -->
+        <div class="modal-body">
+            <div class="col-md-12 text-center">&nbsp;</div>
+            <h1 class="text_title_modal">THÔNG BÁO</h1>
+            <div class="col-md-12">
+                <div class="col-md-12"><h2 id="txtmess" class="text_modal"></h2></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        /*Menu*/
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+
+        function changeBg(a_tag) {
+            $(".menu_mobile").addClass("topmenu_a_bg");
+        }
+
+        /*News*/
+        $('.carousel[data-type="multi"] .item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < 2; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+        $('.carousel1[data-type="multi"] .item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < 2; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+
+        $(window).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > 1400) {
+                $('.thanhphan_img').show(1000);
+            } else {
+                $('.thanhphan_img').hide(1000);
+            }
+        });
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+        };
+
+        $('.counter-count').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 5000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(formatNumber(Math.ceil(now)));
+                }
+            });
+        });
+
+        function checkPhone(phone) {
+            var phone_string = phone.value;
+            var id = phone.id;
+            if (phone_string.length == 0) {
+                $('#' + id + '_normal').hide();
+                $('#' + id + '_error').show();
+                $('#' + id + '_error').html("Vui lòng nhập số điện thoại!");
+            } else {
+                if (phone_string.length < 10 || phone_string.length > 11) {
+                    $('#' + id + '_normal').hide();
+                    $('#' + id + '_error').show();
+                    $('#' + id + '_error').html("Vui lòng nhập đúng định dạng số điện thoại");
+                } else {
+                    if (phone_string.startsWith("0") && phone_string.length > 10) {
+                        $('#' + id + '_normal').hide();
+                        $('#' + id + '_error').show();
+                        $('#' + id + '_error').html("Vui lòng nhập đúng định dạng số điện thoại");
+                    } else {
+                        if (id == "phone1") {
+                            //getInfoByPhone(phone_string);
+                        }
+
+                        $('#' + id + '_error').hide();
+                        $('#' + id + '_error').html("");
+                        $('#' + id + '_error').hide();
+                    }
+                }
+            }
+        }
+
+        function checkPhoneTC(phone) {
+            var phone_string = phone.value;
+            var id = phone.id;
+            if (phone_string.length == 0) {
+                $('#' + id + '_normal').hide();
+                $('#' + id + '_error').show();
+                $('#' + id + '_error').html("Vui lòng nhập số điện thoại!");
+            } else {
+                if (phone_string.length < 10 || phone_string.length > 11) {
+                    $('#' + id + '_normal').hide();
+                    $('#' + id + '_error').show();
+                    $('#' + id + '_error').html("Vui lòng nhập đúng định dạng số điện thoại");
+                } else {
+                    if (phone_string.startsWith("0") && phone_string.length > 10) {
+                        $('#' + id + '_normal').hide();
+                        $('#' + id + '_error').show();
+                        $('#' + id + '_error').html("Vui lòng nhập đúng định dạng số điện thoại");
+                    } else {
+                        if (id == "phone1") {
+                            //getInfoByPhone(phone_string);
+                        }
+
+                        $('#' + id + '_error').hide();
+                        $('#' + id + '_error').html("");
+                        $('#' + id + '_error').hide();
+                    }
+                }
+            }
+        }
+
+        function validateCode(code) {
+            var code_string = code.value;
+            if (code_string.length == 0) {
+                $('#code_error').show();
+                $('#code_error').html("Vui lòng nhập mã cào!");
+            } else if (code_string.length != 9) {
+                $('#code_error').show();
+                $('#code_error').html("Mã cào không đúng. Vui lòng nhập lại!");
+            } else if (code_string.length == 9) {
+                $('#code_error').hide();
+            }
+        }
+
+        function checkQuantity(quantity) {
+            let value = quantity.value;
+            if (isNaN(value)) {
+                $('#package_quantity').val('1');
+            } else if (value < 0) {
+                $('#package_quantity').val('1');
+            }
+        }
+
+        var tichdiem = {
+            init: function () {
+                tichdiem.registerEvent();
+            },
+            registerEvent: function () {
+                $('#submit').off('click').on('click', function () {
+                    var phone1 = $('#phone1').val();
+                    var code = $('#code').val();
+
+                    $('#submit').attr('disabled', 'disabled');
+
+                    //$('#loader').css('display', 'inline-block');
+                    if (phone1.length == 0 && code.length != 0) {
+                        $('#phone1_normal').hide();
+                        $('#phone1_error').show();
+                        $('#phone1_error').html("Vui lòng nhập số điện thoại!");
+
+                        $('#submit').removeAttr("disabled");
+
+                    } else if (phone1.length != 0 && code.length == 0) {
+                        $('#code_normal').hide();
+                        $('#code_error').show();
+                        $('#code_error').html("Vui lòng nhập mã cào!");
+
+                        $('#submit').removeAttr("disabled");
+
+                    } else if (phone1.length == 0 && code.length == 0) {
+                        $('#phone1_normal').hide();
+                        $('#phone1_error').show();
+                        $('#phone1_error').html("Vui lòng nhập số điện thoại!");
+                        $('#code_normal').hide();
+                        $('#code_error').show();
+                        $('#code_error').html("Vui lòng nhập mã cào!");
+
+                        $('#submit').removeAttr("disabled");
+
+                    } else {
+                        if (phone1.length < 10 || phone1.length > 11) {
+                            $('#phone1_normal').hide();
+                            $('#phone1_error').show();
+                            $('#phone1_error').html("Vui lòng nhập đúng định dạng số điện thoại");
+
+                            $('#submit').removeAttr("disabled");
+
+                        } else {
+                            $.ajax({
+                                url: '/Home/CallKichHoat',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: {
+                                    phone1: phone1,
+                                    code: code,
+                                },
+                                success: function (response) {
+                                    let message = response.message;
+                                    message = message.replace("19006436", "<a style='color: red;font-weight: bold;' href='tel:19006436'>1900.6436</a>");
+                                    message = message.replace("1900.6436", "<a style='color: red;font-weight: bold;' href='tel:19006436'>1900.6436</a>");
+                                    message = message.replace("http://dehp.vn", "https://dehp.vn");
+                                    message = message.replace("https://dehp.vn", "<a href='https://dehp.vn' target='_blank' style='color: blue;font-weight: bold;'>https://dehp.vn</a>");
+                                    //console.log(response);
+                                    if (response.success) {
+                                        if (response.message == "3") {
+                                            $('#exampleModal').modal('show');
+                                            $('#txtmess').html("<span style='line-height: 2'>" + message + '</span>');
+                                        } else if (response.type == "code") {
+                                            $('#code_error').show();
+                                            $('#code_normal').hide();
+                                            $('#code_error').html(response.message);
+                                        } else {
+                                            //alert('e');
+                                            $('#exampleModal').modal('show');
+                                            $('#txtmess').html("<span style='line-height: 2'>" + message + '</span>');
+
+                                            $('#code_error').hide();
+                                            $('#phone1_error').hide();
+                                        }
+                                        //$('#loader').css('display', 'none');
+                                    }
+                                    else {//success false
+                                        $('#exampleModal').modal('show');
+                                        $('#txtmess').html("<span style='line-height: 2'>" + message + '</span>');
+                                        $('#code_error').hide();
+                                        $('#phone1_error').hide();
+                                    }
+
+                                    $('#submit').removeAttr("disabled");
+                                },
+                            });
+                        }
+                    }
+                });
+            },
+            resetForm: function () {
+                //$('#form')[0].reset();
+            }
+        }
+        tichdiem.init();
+
+        var tracuu = {
+            init: function () {
+                tracuu.registerEvent();
+            },
+            registerEvent: function () {
+                $('#submit_tc').off('click').on('click', function () {
+                    $('#submit_tc').attr('disabled', 'disabled');
+
+                    var phone1 = $('#phone_tc').val();
+                    var product = "";
+                    if (phone1.length == 0) {
+                        $('#phone_tc_normal').hide();
+                        $('#phone_tc_error').show();
+                        $('#phone_tc_error').html("Vui lòng nhập số điện thoại!");
+
+                        $('#submit_tc').removeAttr("disabled");
+
+                    } else {
+                        //$('#loader').css('display', 'inline-block');
+                        $.ajax({
+                            url: '/Home/CallTracuu',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                phone1: phone1,
+                                product: product
+                            },
+                            success: function (response) {
+                                if (response.success) {
+                                    let message = response.message;
+
+                                    $('#exampleModal').modal('show');
+                                    $('#txtmess').html("<span style='line-height: 2'>" + message + '</span>');
+                                    $('#quantity').val('');
+                                    $('#phone_tc_error').hide();
+                                    $('#product_error').hide();
+                                    //$('#loader').css('display', 'none');
+                                    $('#phone_tc_error').hide();
+                                    $('#product_error').hide();
+                                }
+                                else {//success false
+                                    $('#exampleModal').modal('show');
+                                    $('#txtmess').html("<span style='line-height: 2'>" + message + '</span>');
+                                    $('#quantity').val('');
+                                    $('#phone_tc_error').hide();
+                                    $('#product_error').hide();
+                                }
+
+                                $('#submit_tc').removeAttr("disabled");
+                            },
+                        });
+                    }
+                });
+            },
+            resetForm: function () {
+                //$('#form')[0].reset();
+            }
+        }
+        tracuu.init();
+
+        function resetForm() {
+            //$('#form')[0].reset();
+            $('#code').val("");
+            $('#code_normal').hide();
+            $('#code_error').hide();
+        }
+        $('#quantity').val('');
+    </script>
+}

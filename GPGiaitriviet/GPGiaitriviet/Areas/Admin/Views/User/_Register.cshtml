@@ -1,0 +1,48 @@
+﻿@model GPGiaitriviet.Models.RegisterViewModel
+@{
+    List<GPGiaitriviet.Models.AspNetRole> role = (List<GPGiaitriviet.Models.AspNetRole>)TempData["role"];
+}
+
+@using (Html.BeginForm("Registers", "User"))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4>Tạo tài khoản mới</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Tên tài khoản", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>    
+    <div class="form-group">
+        @Html.Label("Nhập mật khẩu", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Nhập lại mật khẩu", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Phân Quyền", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
+            @Html.DropDownListFor(model => model.Role, new SelectList(role, "Id", "Id"), "--choose role--",
+                 new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-ok"></i> Lưu</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Thoát</button>
+        </div>
+    </div>
+</div>
+}

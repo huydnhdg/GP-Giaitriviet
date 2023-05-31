@@ -1,0 +1,368 @@
+﻿@model PagedList.IPagedList<GPGiaitriviet.Models.Customer>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Customer";
+    var index = 1;
+    var indexPage = 0;
+    List<GPGiaitriviet.Models.AspNetUser> tele = (List<GPGiaitriviet.Models.AspNetUser>)TempData["tele"];
+    List<GPGiaitriviet.Models.AspNetUser> tele1 = (List<GPGiaitriviet.Models.AspNetUser>)TempData["tele1"];
+    bool isView = User.IsInRole("Admin") || User.IsInRole("Leader");
+}
+@*<tr class="panel panel-default">*@
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Thông tin</label>
+                        @Html.TextBox("searchstring", ViewBag.searchstring as string, new { @class = "form-control", placeholder = "nhập sđt, tên, địa chỉ,..." })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Giới tính</label>
+                        @Html.DropDownList("sex", new List<SelectListItem> { new SelectListItem() { Text = "Nam", Value = "Nam" }, new SelectListItem() { Text = "Nữ", Value = "Nữ" }, new SelectListItem() { Text = "Khác", Value = "Khác" } }, "--Giới tính--", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Từ năm sinh</label>
+                        @Html.TextBox("from_year", ViewBag.from_year as string, new { @class = "form-control", @type = "number", min = "1900", max = "2025", placeholder = "nhập năm sinh" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Đến năm sinh</label>
+                        @Html.TextBox("to_year", ViewBag.to_year as string, new { @class = "form-control", @type = "number", min = "1900", max = "2025", placeholder = "nhập năm sinh" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                @if (isView)
+                {
+                    <div class="col-md-3">
+
+                        <div class="form-group">
+                            <label>Người phụ trách</label>
+                            @Html.DropDownList("callby", new SelectList(tele1, "UserName", "UserName"), "--Chọn người phụ trách--", new { @class = "form-control" })
+                            @*@Html.DropDownList("callby", new List<SelectListItem> { new SelectListItem(tele, "UserName", "UserName"), new SelectListItem() { Text = "Khác", Value = "Khác" } }, "--Chọn người phụ trách--", new { @class = "form-control" })*@
+                        </div>
+
+                    </div>
+                }
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Ngày cập nhật</label>
+                        @Html.TextBox("from_date", ViewBag.from_date as string, new { @class = "form-control", @type = "date" })
+                    </div>
+                </div>
+                @*<div class="col-md-3">
+                        <div class="form-group">
+                            <label>Đến ngày</label>
+                            @Html.TextBox("to_date", ViewBag.to_date as string, new { @class = "form-control", @type = "date" })
+                        </div>
+                    </div>*@
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Ngày liên hệ</label>
+                        @Html.TextBox("from_calldate", ViewBag.from_calldate as string, new { @class = "form-control", @type = "date" })
+                    </div>
+                </div>
+                @*<div class="col-md-3">
+                        <div class="form-group">
+                            <label>Liên hệ đến ngày</label>
+                            @Html.TextBox("to_calldate", ViewBag.to_calldate as string, new { @class = "form-control", @type = "date" })
+                        </div>
+                    </div>*@
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Tìm kiếm</button>
+                        <a class="btn btn-info" href="@Url.Action("ExportExcel")"><i class="glyphicon glyphicon-download-alt"></i> Xuất file</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@*</tr>*@
+@*Gán các thông tin của những User được chọn cho người phụ trách*@
+@if (isView)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("AddTele", "Customer", FormMethod.Get))
+            {
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.DropDownList("tele", new SelectList(tele, "UserName", "UserName"), "--Chọn người phụ trách--",
+                            new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <button type="button" id="choosetele" class="btn btn-success"><i class="glyphicon glyphicon-screenshot"></i> Chọn nhân viên</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.DropDownList("target", new SelectList(tele, "UserName", "UserName"), "--Chọn người phụ trách--",
+                            new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <a href="#" class="btn btn-danger" id="change"><i class="glyphicon glyphicon-fast-forward"></i> Chuyển nhân viên</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    Khách hàng
+                </th>
+                <th>
+                    Ngày tạo
+                </th>
+                <th>
+                    Cập nhật
+                </th>
+                <th>
+                    HHTD
+                </th>
+                <th>
+                    KTCD
+                </th>
+                <th>
+                    SUPERMAN
+                </th>
+                <th>
+                    VVG
+                </th>
+                <th>
+                    Phụ trách
+                </th>
+                <th>Liên hệ</th>
+                <th>Ghi chú</th>
+                <th>
+                    #
+                </th>
+                @if (User.IsInRole("Admin") || User.IsInRole("Leader"))
+                {
+                    <th class="text-center">
+                        <input type="checkbox" onclick="toggle(this);" />
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                indexPage = @index++ + (@Model.PageNumber - 1) * @Model.PageSize;
+            <tr>
+                <td>@indexPage</td>
+                <td>
+                    @item.Phone<br />
+                    @item.Name<br />
+                    @if (item.Birthday != null)
+                    {
+                        @item.Birthday<br />
+                    }
+                    @if (item.Sex != null)
+                    {
+                        @item.Sex<br />
+                    }
+                    @item.Address @item.Ward @item.District @item.Province
+                </td>
+                <td>
+                    @item.Createdate.Value.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @if (item.Editdate != null)
+                    {
+                        <span>@item.Editdate.Value.ToString("dd/MM/yyyy")</span>
+                    }
+                </td>
+                <td>
+                    @item.HHTD
+                </td>
+                <td>
+                    @item.KTCD
+                </td>
+                <td>
+                    @item.SUPERMAN
+                </td>
+                <td>
+                    @item.VVG
+                </td>
+                <td>
+                    @item.Callby
+                </td>
+                <td>
+                    @if (item.Calldate != null)
+                    {
+                        <span>@item.Calldate.Value.ToString("dd/MM/yyyy")</span>
+                    }
+                </td>
+                <td>@item.Note</td>
+                <td>
+                    <a href="/Admin/LogMO?User_ID=@item.Phone"><i class="glyphicon glyphicon-eye-open"></i></a>
+
+                </td>
+                @if (isView)
+                {
+                    <td class="text-center">
+                        @*@if (item.Callby == null)
+                {*@
+                        <a class="btn"><input type="checkbox" class="checkBox" value="@item.Phone" /></a>
+                        @*}*@
+                    </td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<hr />
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, searchstring = ViewBag.searchstring, from_date = ViewBag.from_date, sex = ViewBag.sex, from_year = ViewBag.from_year, to_year = ViewBag.to_year, callby = ViewBag.callby, from_calldate = ViewBag.from_calldate }))
+<p class="pageof">page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+
+<!--Bootstrap Pop Up modal-->
+<!--<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">-->
+<!-- Modal content-->
+<!--<div class="modal-content">
+
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+        </div>
+
+    </div>
+</div>-->
+<!--End of Bootstrap Pop-Up modal-->
+
+@section scripts{
+    <script>
+        function toggle(source) {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i] != source)
+                    checkboxes[i].checked = source.checked;
+            }
+        }
+        $("#choosetele").click(function () {
+            var x = confirm('Chuyển khách hàng cho nhân viên phụ trách ?');
+            if (x) {
+                var selectedIDs = new Array();
+                $('input:checkbox.checkBox').each(function () {
+                    if ($(this).prop('checked')) {
+                        selectedIDs.push($(this).val());
+                    }
+                });
+                var tele = $("#tele :selected").text();
+                console.log(JSON.stringify(selectedIDs, tele));
+
+                var options = {};
+                options.url = "/Admin/Customer/AddTele";
+                options.type = "POST";
+                options.data = JSON.stringify({ "tele": tele, "customer": selectedIDs });
+                options.contentType = "application/json";
+                options.dataType = "json";
+                options.success = function (msg) {
+                    alert(msg);
+                    location.reload();
+
+                };
+                options.error = function () {
+                    alert("Lỗi trong quá trình thêm người phụ trách!");
+                };
+                $.ajax(options);
+            } else {
+                return false;
+            }
+        });
+        $("#table-gift .edits").click(function () {
+            //get student id of row clicked
+            var studentId = $(this).closest("tr").find("td").eq(1).html();
+            $.ajax({
+                type: "POST", //Method type
+                url: "/Admin/Gift/Edit", //url to load partial view
+                data: '{studentId: "' + studentId + '" }', //send student id
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $('#ModalBody').html(response);
+                    $('#myModal').modal('show');
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+        $("#change").click(function () {
+            ////get student id of row clicked
+            //// var studentId = $(this).closest("tr").find("td").eq(1).html();
+            //$.ajax({
+            //    type: "POST", //Method type
+            //    url: "/Admin/Customer/Change", //url to load partial view
+            //    // data: '{studentId: "' + studentId + '" }', //send student id
+            //    contentType: "application/json; charset=utf-8",
+            //    dataType: "html",
+            //    success: function (response) {
+            //        $('#ModalBody').html(response);
+            //        $('#myModal').modal('show');
+            //    },
+            //    failure: function (response) {
+            //        alert(response.responseText);
+            //    },
+            //    error: function (response) {
+            //        alert(response.responseText);
+            //    }
+            //});
+            var x = confirm('Chuyển cho nhân viên phụ trách ?');
+            if (x) {
+
+                var tele = $("#tele :selected").text();
+                var target = $("#target :selected").text();
+                console.log(JSON.stringify(target, tele));
+
+                var options = {};
+                options.url = "/Admin/Customer/Change";
+                options.type = "POST";
+                options.data = JSON.stringify({ "tele": tele, "target": target });
+                options.contentType = "application/json";
+                options.dataType = "json";
+                options.success = function (msg) {
+                    alert(msg);
+                    location.reload();
+
+                };
+                options.error = function () {
+                    alert("Lỗi trong quá trình thêm người phụ trách!");
+                };
+                $.ajax(options);
+            } else {
+                return false;
+            }
+        });
+    </script>
+}
+
+

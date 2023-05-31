@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Page.Title</title>
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <nav class="sticky">
+        <div class="container">
+
+            <div class="pc">
+                <ul class="col-md-1">
+                </ul>
+                <ul class="col-md-2">
+                    <li>
+                        <a class="btn btn-default page-scroll" href="~/#gioithieu">
+                            Giới thiệu
+                        </a>
+                    </li>
+                </ul>
+                <ul class="col-md-2">
+                    <li>
+                        <a class="btn btn-default page-scroll" href="~/#tichdiem">
+                            Tích điểm
+                        </a>
+                    </li>
+                </ul>
+                <ul class="col-md-2">
+                    <li>
+                        <a class="btn btn-default page-scroll" href="~/#tracuu">
+                            Tra cứu
+                        </a>
+                    </li>
+                </ul>
+                <ul class="col-md-3">
+                    <li>
+                        <a class="btn btn-default page-scroll" href="~/#timhieuthemvesanpham">
+                            Tìm hiểu thêm về sản phẩm
+                        </a>
+                    </li>
+                </ul>
+                <ul class="col-md-1">
+                </ul>
+            </div>
+            <div class="mobile">
+                <!-- Top Navigation Menu -->
+                <div class="topnav">
+                    <a href="#home" class="active" style="text-align: right;">&nbsp;</a>
+                    <div id="myLinks" class="menu_link">
+                        <a href="~/#gioithieu" class="menu_mobile" onclick="myFunction()" style="padding-top: 5px; padding-bottom: 5px;">
+                            Giới thiệu
+                        </a>
+                        <a href="~/#tichdiem" onclick="myFunction()" style="padding-top: 5px; padding-bottom: 5px;">
+                            Tích điểm
+                        </a>
+                        <a href="~/#tracuu" onclick="myFunction()" style="padding-top: 5px; padding-bottom: 5px;">
+                            Tra cứu
+                        </a>
+                        <a href="~/#timhieuthemvesanpham" onclick="myFunction()" style="padding-top: 5px; padding-bottom: 5px;">
+                            Tìm hiểu thêm về sản phẩm
+                        </a>
+                    </div>
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="body-content" style="margin-top: -50px;">
+        @RenderBody()
+
+        <footer id="footer_pc">
+            <div class="container">
+                <div class="col-md-12 text-center text-uppercase">
+                    <p class="footer_title">
+                        sản phẩm của dược GP FRANCE có bán tại các nhà thuốc trên toàn quốc<br />
+                        liên hệ <span style="color: #ec1c24;">hotline <a style="color: #ec1c24" href="tel:18001716">1800.1716</a></span> để đặt hàng nhanh nhất
+                    </p>
+                </div>
+            </div>
+            <div class="container footer_content">
+                <div class="col-md-5">
+                    <p style="font-weight: bold; font-size: 15px;">CÔNG TY CỔ PHẦN LIÊN DOANH DƯỢC GP FRANCE</p>
+                    <p>
+                        <span style="font-weight: bold;">Trụ sở:</span> khu công nghiệp Bích Hòa, huyện Thanh Oai, Hà Nội<br />
+                        <span style="font-weight: bold;">VP làm việc:</span> Số 26/134, Lê Trọng Tấn, Quận Thanh Xuân, Hà Nội<br />
+                        <span style="font-weight: bold;">VP Miền Nam:</span> Số 85 Bàu Cát 6, phường 14, quận Tân Bình, TP HCM<br />
+                    </p>
+                </div>
+                <div class="col-md-4" style="padding-left: 80px;">
+                    <p style="font-weight: bold; font-size: 12px;">Thông tin liên hệ</p>
+                    <p>
+                        <span style="font-weight: bold;">Điện thoại:</span> <a style="color: #333;" href="tel:02822476472">(+84) 02822476472 – 73</a><br />
+                        <span style="font-weight: bold;">Tổng đài tư vấn miễn cước:</span> <a style="color: #333;" href="tel:18001716">18001716</a><br />
+                        <span style="font-weight: bold;">Website:</span> <a href="//duocvietduc.com" style="color: #333;" target="_blank">http://duocphamgp.com.vn</a>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p style="font-weight: bold; font-size: 12px;">Các trang mua hàng trực tuyến</p>
+                    <p>
+                        <span style="font-weight: bold;">Lazada:</span> <a href="https://www.lazada.vn/shop/mama-sua-non-star-biotic" style="color: #333;" target="_blank">https://www.lazada.vn/shop/mama-sua-non-star-biotic</a><br />
+                        <span style="font-weight: bold;">Tiki:</span> <a href="http://tiki.vn/cua-hang/ma-ma-sua-non" style="color: #333;" target="_blank">http://tiki.vn/cua-hang/ma-ma-sua-non</a><br />
+                        <span style="font-weight: bold;">Shopee:</span> <a href="https://shopee.vn/mamasuanon1" style="color: #333;" target="_blank">https://shopee.vn/mamasuanon1</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <footer id="footer_mobile">
+            <div class="container">
+                <div class="col-md-12 text-justify text-uppercase">
+                    <p class="footer_title" style="font-size: 15px;">
+                        sản phẩm của dược GP FRANCE có bán tại các nhà thuốc trên toàn quốc<br />
+                        liên hệ <span style="color: #ec1c24;">hotline <a style="color: #ec1c24" href="tel:18001716">1800.1716</a></span> để đặt hàng nhanh nhất
+                    </p>
+                </div>
+            </div>
+            <div class="container footer_content">
+                <div class="col-md-5">
+                    <p style="font-weight: bold; font-size: 12px;">CÔNG TY CỔ PHẦN DƯỢC GP FRANCE</p>
+                    <p class="footer_truso">
+                        <span style="font-weight: bold;">Trụ sở:</span> khu công nghiệp Bích Hòa, huyện Thanh Oai, Hà Nội<br />
+                        <span style="font-weight: bold;">VP làm việc:</span> Số 26/134, Lê Trọng Tấn, Quận Thanh Xuân, Hà Nội<br />
+                        <span style="font-weight: bold;">VP Miền Nam:</span> Số 85 Bàu Cát 6, phường 14, quận Tân Bình, TP HCM<br />
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p style="font-weight: bold; font-size: 12px;">Thông tin liên hệ</p>
+                    <p>
+                        <span style="font-weight: bold;">Điện thoại:</span> <a style="color: #333;" href="tel:02822476472">(+84) 02822476472 – 73</a><br />
+                        <span style="font-weight: bold;">Tổng đài tư vấn miễn cước:</span> <a style="color: #333;" href="tel:18001716">18001716</a><br />
+                        <span style="font-weight: bold;">Website:</span> <a href="//duocvietduc.com" style="color: #333;" target="_blank">http://duocphamgp.com.vn</a>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p style="font-weight: bold; font-size: 12px;">Các trang mua hàng trực tuyến</p>
+                    <p>
+                        <span style="font-weight: bold;">Lazada:</span> <a href="https://www.lazada.vn/shop/mama-sua-non-star-biotic" style="color: #333;" target="_blank">https://www.lazada.vn/shop/mama-sua-non-star-biotic</a><br />
+                        <span style="font-weight: bold;">Tiki:</span> <a href="http://tiki.vn/cua-hang/ma-ma-sua-non" style="color: #333;" target="_blank">http://tiki.vn/cua-hang/ma-ma-sua-non</a><br />
+                        <span style="font-weight: bold;">Shopee:</span> <a href="https://shopee.vn/mamasuanon1" style="color: #333;" target="_blank">https://shopee.vn/mamasuanon1</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
